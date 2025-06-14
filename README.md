@@ -10,13 +10,13 @@ Just imagine leaving an invisible token in each of your programs.
 # Example
 
 ```
-$ python3 src/sigil.py --input examples/lorem_ipsum.txt --output examples/lorem_ipsum_output.txt --signature "created by Artur Sikorski"
+$ python src/sigil.py --input examples/lorem_ipsum.txt --output examples/lorem_ipsum_output.txt --signature "created by Artur Sikorski"
 ```
 
 and then:
 
 ```
-$ python3 src/sigil_extractor.py --input examples/lorem_ipsum_output.txt
+$ python src/sigil_extractor.py --input examples/lorem_ipsum_output.txt
 created by Artur Sikorski
 ```
 
@@ -25,7 +25,7 @@ created by Artur Sikorski
 
 Learn from:
 ```
-$ python3 src/learn.py --file examples/lorem_ipsum_output.txt
+$ python src/learn.py --file examples/lorem_ipsum_output.txt
 INVISIBLE_CHARS
 L[\u2062]o[\u2062]r[\u200c]e[\u2063]m[\u2062] [\u2063]I[\u2062]p[\u200c]s[\u2062]u[\u200c]m[\u2062] [\u2062]i[\u200c]s[\u200c] [\u200c]s[\u2062]i[\u2063]m[\u2063]p[\u2063]l[\u2062]y[\u2063] [\u2062]d[\u2062]u[\u2063]m[\u200c]m[\u2063]y[\u2063] [\u2063]t[\u2063]e[\u200c]x[\u2063]t[\u2063] [\u2062]o[\u200c]f[\u2062] [\u2063]t[\u200c]h[\u2062]e[\u200c] [\u200c]p[\u2062]r[\u200c]i[\u2063]n[\u2062]t[\u200c]i[\u2062]n[\u2063]g[\u2063] [\u2062]a[\u200c]n[\u200c]d[\u2062] [\u2062]t[\u2062]y[\u2062]p[\u200c]e[\u200c]s[\u2063]e[\u2063]t[\u2063]t[\u200c]i[\u200c]n[\u200c]g[\u2062] [\u2063]i[\u2062]n[\u200c]d[\u2062]u[\u2063]s[\u2063]t[\u2063]r[\u2063]y[\u200c].[\u2063] [\u2063]L[\u200c]o[\u2063]r[\u2063]e[\u2062]m[\u2063] [\u2062]I[\u200c]p[\u2062]s[\u2063]u[\u200c]m[\u2062] [\u2063]h[\u2063]a[\u2063]s[\u200c] [\u200c]b[\u200c]e[\u200c]e[\u200c]n[\u2062] [\u2063]t[\u200c]h[\u2062]e[\u200c] [\u2062]i[\u2062]n[\u2063]d[\u2062]u[\u2063]s[\u2062]t[\u200c]r[\u2063]y[\u2063]'[\u2063]s[\u2063] [\u200c]s[\u2063]t[\u200c]a[\u2062]n[\u200c]d[\u200c]a[\u2062]r[\u2063]d[\u2062] [\u200c]d[\u2062]u[\u2062]m[\u2063]m[\u200c]y[\u200c] [\u2062]text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
