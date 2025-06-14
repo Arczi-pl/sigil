@@ -1,0 +1,33 @@
+repos:
+  - repo: local
+    hooks:
+      - id: check_shell
+        name: check_shell
+        entry: scripts/ci/verification.sh check_shell --skip-venv --pre-commit
+        language: script
+        files: \.sh$
+        pass_filenames: false
+  - repo: local
+    hooks:
+      - id: check_ruff
+        name: check_ruff
+        entry: scripts/ci/verification.sh check_ruff --skip-venv --fix
+        language: python
+        files: \.py$
+        pass_filenames: false
+  - repo: local
+    hooks:
+      - id: check_ruff_format
+        name: check_ruff_format
+        entry: scripts/ci/verification.sh check_ruff_format --skip-venv --fix
+        language: python
+        files: \.py$
+        pass_filenames: false
+  - repo: local
+    hooks:
+      - id: check_mypy
+        name: check_mypy
+        entry: scripts/ci/verification.sh check_mypy --skip-venv
+        language: python
+        files: \.py$
+        pass_filenames: false

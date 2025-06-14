@@ -1,0 +1,43 @@
+[tool.ruff]
+line-length = 88
+src = ["src"]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "ANN401", # Dynamically typed expressions
+  "COM812", # missing trailing comma in a tuple
+  "D203", # 1 blank line not required before class docstring
+  "D105", # missing docstring in magic method
+  "D107", # missing docstring in __init__
+  "D212", # 1 blank line between the first and second lines of docstrings
+  "G004", # logging statement uses f-string
+  "TD002", # missing TODO author
+  "TD003", # missing TODO issue link
+  "TRY400", # logging.error used instead of logging.exception
+  "FIX002", # line with TODO
+]
+
+[tool.ruff.lint.per-file-ignores]
+"*__init__.py" = ["D104"]
+"src/tests/*" = ["D100", "D103", "S101", "SLF001"]
+
+[tool.mypy]
+strict = true
+
+[tool.pytest.ini_options]
+addopts = "-vvv"
+
+[tool.coverage.run]
+omit = [
+    "*__init__.py",
+    "src/tests/*",
+]
+
+[tool.coverage.report]
+fail_under = 100
+exclude_lines = [
+    "# coverage: ignore",
+    "if TYPE_CHECKING:"
+]
