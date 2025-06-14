@@ -1,5 +1,6 @@
 import argparse
 import sys
+
 from config import BASE, INVISIBLE_CHARS
 from utils import number_to_base
 
@@ -30,11 +31,10 @@ def sigil(text_to_sigil, sigal):
         sigiled_text += char
         if invisible_char is not None:
             sigiled_text += invisible_char
-    else:
-        invisible_char = next(invisible_char_gen, None)
-        if invisible_char is not None:
-            print("❌ too long sigal!")
-            return None
+    invisible_char = next(invisible_char_gen, None)
+    if invisible_char is not None:
+        print("❌ too long sigal!")
+        return None
     return sigiled_text
 
 
@@ -47,7 +47,7 @@ def main():
     args = parser.parse_args()
 
     try:
-        with open(args.input, "r", encoding="utf-8") as f:
+        with open(args.input, encoding="utf-8") as f:
             file_content = f.read()
     except FileNotFoundError:
         print(f"❌ No such file: {args.input}")
@@ -61,7 +61,7 @@ def main():
     try:
         with open(args.output, "w", encoding="utf-8") as f:
             f.write(result)
-        print(f"✅ Done")
+        print("✅ Done")
     except Exception as e:
         print(f"❌ Exception durring save to file: {e}")
 

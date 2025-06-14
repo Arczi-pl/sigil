@@ -1,6 +1,7 @@
 
 import argparse
-from config import INVISIBLE_CHARS, BASE, ALPHABET
+
+from config import ALPHABET, BASE, INVISIBLE_CHARS
 from utils import get_number_from_invisible_char_from_number
 
 
@@ -35,7 +36,7 @@ def main():
     args = parser.parse_args()
 
     try:
-        with open(args.input, "r", encoding="utf-8") as f:
+        with open(args.input, encoding="utf-8") as f:
             file_content = f.read()
     except FileNotFoundError:
         print(f"❌ no such file: {args.input}")

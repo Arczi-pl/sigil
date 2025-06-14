@@ -2,8 +2,8 @@ from config import ALPHABET, BASE, INVISIBLE_CHARS
 
 
 def number_to_base(n):
-    if BASE > len(ALPHABET):
-        raise ValueError("Za duża podstawa - maksymalnie {}".format(len(ALPHABET)))
+    if len(ALPHABET) < BASE:
+        raise ValueError(f"Za duża podstawa - maksymalnie {len(ALPHABET)}")
     if n == 0:
         return ALPHABET[0]
     digits = []

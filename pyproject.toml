@@ -1,0 +1,30 @@
+[tool.ruff]
+line-length = 88
+src = ["src"]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["ALL"]
+
+[tool.ruff.lint.per-file-ignores]
+"*__init__.py" = ["D104"]
+"tests/*" = ["D100", "D103", "S101", "SLF001"]
+
+[tool.mypy]
+strict = true
+
+[tool.pytest.ini_options]
+addopts = "-vvv"
+
+[tool.coverage.run]
+omit = [
+    "*__init__.py",
+    "src/tests/*",
+]
+
+[tool.coverage.report]
+fail_under = 100
+exclude_lines = [
+    "# coverage: ignore",
+    "if TYPE_CHECKING:"
+]
