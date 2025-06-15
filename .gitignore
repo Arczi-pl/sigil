@@ -5,3 +5,4 @@ __pycache__
 coverage_report
 .mypy_cache
 .coverage
+.pytest_cache

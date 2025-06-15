@@ -1,34 +1,73 @@
-# sigil
+# Sigil (Signature Invisible Layer)
 
-sigil (Signature Invisible Layer) is a text steganography tool created by only one person - me!
-It allows you to hide any signature in a text file and then extract it.
+Sigil is a text steganography tool created by Artur Sikorski that allows you to invisibly embed signatures or hidden messages in plain text files and extract them later. The embedding process is done using invisible Unicode characters, making it undetectable to human readers.
 
-❕ This also applies to the source code files ❕
+## Features
 
-Just imagine leaving an invisible token in each of your programs.
+- **Invisible Embedding**: Hide messages within text files without changing their visible appearance
+- **Simple CLI Interface**: Easy-to-use command-line interface
+- **Unicode-Based**: Uses invisible Unicode characters for steganography
+- **Preserves Original Text**: Does not alter the readable content of the document
+- **Automatic Length Calculation**: Determines the maximum length of signature that can be embedded
 
-# Example
+## Installation
 
+### Prerequisites
+- Python 3.12 or higher
+
+### From Source
+```bash
+# Clone the repository
+git clone https://github.com/Arczi-pl/sigil.git
+cd sigil
+
+# Create a virtual environment and install dependencies
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
-$ python src/sigil.py --input examples/lorem_ipsum.txt --output examples/lorem_ipsum_output.txt --signature "created by Artur Sikorski"
+
+## Usage
+
+### Embedding a Signature
+
+```bash
+./sigil <input_file> "<your_signature>"
 ```
 
-and then:
+This will create a new file with the same content but with your signature embedded invisibly. The output file will be named with the suffix `__sigiled` added to the original filename.
 
+Example:
+```bash
+./sigil examples/lorem_ipsum.txt "created by Artur Sikorski"
 ```
-$ python src/sigil_extractor.py --input examples/lorem_ipsum_output.txt
-created by Artur Sikorski
+
+### Extracting a Signature
+
+```bash
+./sigil <sigiled_file>
 ```
 
+This will extract and display the signature that was embedded in the file.
 
-# How it works?
-
-Learn from:
+Example:
+```bash
+./sigil examples/lorem_ipsum__sigiled.txt
+# Output: created by Artur Sikorski
 ```
-$ python src/learn.py --file examples/lorem_ipsum_output.txt
-INVISIBLE_CHARS
-L[\u2062]o[\u2062]r[\u200c]e[\u2063]m[\u2062] [\u2063]I[\u2062]p[\u200c]s[\u2062]u[\u200c]m[\u2062] [\u2062]i[\u200c]s[\u200c] [\u200c]s[\u2062]i[\u2063]m[\u2063]p[\u2063]l[\u2062]y[\u2063] [\u2062]d[\u2062]u[\u2063]m[\u200c]m[\u2063]y[\u2063] [\u2063]t[\u2063]e[\u200c]x[\u2063]t[\u2063] [\u2062]o[\u200c]f[\u2062] [\u2063]t[\u200c]h[\u2062]e[\u200c] [\u200c]p[\u2062]r[\u200c]i[\u2063]n[\u2062]t[\u200c]i[\u2062]n[\u2063]g[\u2063] [\u2062]a[\u200c]n[\u200c]d[\u2062] [\u2062]t[\u2062]y[\u2062]p[\u200c]e[\u200c]s[\u2063]e[\u2063]t[\u2063]t[\u200c]i[\u200c]n[\u200c]g[\u2062] [\u2063]i[\u2062]n[\u200c]d[\u2062]u[\u2063]s[\u2063]t[\u2063]r[\u2063]y[\u200c].[\u2063] [\u2063]L[\u200c]o[\u2063]r[\u2063]e[\u2062]m[\u2063] [\u2062]I[\u200c]p[\u2062]s[\u2063]u[\u200c]m[\u2062] [\u2063]h[\u2063]a[\u2063]s[\u200c] [\u200c]b[\u200c]e[\u200c]e[\u200c]n[\u2062] [\u2063]t[\u200c]h[\u2062]e[\u200c] [\u2062]i[\u2062]n[\u2063]d[\u2062]u[\u2063]s[\u2062]t[\u200c]r[\u2063]y[\u2063]'[\u2063]s[\u2063] [\u200c]s[\u2063]t[\u200c]a[\u2062]n[\u200c]d[\u200c]a[\u2062]r[\u2063]d[\u2062] [\u200c]d[\u2062]u[\u2062]m[\u2063]m[\u200c]y[\u200c] [\u2062]text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-Digits
-L[1]o[1]r[0]e[2]m[1] [2]I[1]p[0]s[1]u[0]m[1] [1]i[0]s[0] [0]s[1]i[2]m[2]p[2]l[1]y[2] [1]d[1]u[2]m[0]m[2]y[2] [2]t[2]e[0]x[2]t[2] [1]o[0]f[1] [2]t[0]h[1]e[0] [0]p[1]r[0]i[2]n[1]t[0]i[1]n[2]g[2] [1]a[0]n[0]d[1] [1]t[1]y[1]p[0]e[0]s[2]e[2]t[2]t[0]i[0]n[0]g[1] [2]i[1]n[0]d[1]u[2]s[2]t[2]r[2]y[0].[2] [2]L[0]o[2]r[2]e[1]m[2] [1]I[0]p[1]s[2]u[0]m[1] [2]h[2]a[2]s[0] [0]b[0]e[0]e[0]n[1] [2]t[0]h[1]e[0] [1]i[1]n[2]d[1]u[2]s[1]t[0]r[2]y[2]'[2]s[2] [0]s[2]t[0]a[1]n[0]d[0]a[1]r[2]d[1] [0]d[1]u[1]m[2]m[0]y[0] [1]text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-```
+## How It Works
+
+Sigil works by:
+
+1. Converting your signature message to a number using UTF-8 encoding
+2. Converting that number to a custom base representation (using 3 invisible characters)
+3. Using three different invisible Unicode characters (\u200c, \u2062, \u2063) to represent digits in this custom base
+4. Inserting these invisible characters between characters of the original text
+5. When extracting, the process is reversed to recover the original message
+
+## Examples
+
+The repository includes example files in the `examples/` directory:
+- `lorem_ipsum.txt` - A sample text file
+- `lorem_ipsum__sigiled.txt` - The same text with an embedded signature
