@@ -35,7 +35,7 @@ def get_custom_base_number_from_invisible_chars(invisible_chars: list[str]) -> s
     )
 
 
-def get_text_from_custom_base_numbner(custom_base_number: str) -> str:
+def get_text_from_custom_base_number(custom_base_number: str) -> str:
     """
     Convert a custom base number to a UTF-8 string.
 
@@ -64,4 +64,4 @@ def decode(text: str) -> str:
     """
     invisible_chars = get_invisible_chars_from_sigiled_text(text)
     custom_base_number = get_custom_base_number_from_invisible_chars(invisible_chars)
-    return get_text_from_custom_base_numbner(custom_base_number)
+    return get_text_from_custom_base_number(custom_base_number)

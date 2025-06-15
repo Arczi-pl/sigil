@@ -5,31 +5,12 @@ This module provides functionality to process text files by adding invisible cha
 as a signature based on a given input text.
 """
 
-import math
 from collections.abc import Generator
 from contextlib import suppress
 
 from src.base_converter import custom_base
 from src.config import Config
 from src.logger import logger
-
-
-def get_max_signature_len(text: str, *, base: int = Config.BASE) -> int:
-    """
-    Calculate the maximum length of a signature that can be embedded in the text.
-
-    The maximum length is determined by the length of the text and the base used for
-    encoding.
-
-    Args:
-        text: The text in which the signature will be embedded.
-        base: The base used for encoding (default is Config.BASE).
-
-    Returns:
-        The maximum length of the signature that can be embedded in the text.
-
-    """
-    return math.floor(len(text) * math.log2(base) / 8)
 
 
 def get_number_from_text(text: str) -> int:
@@ -91,12 +72,6 @@ def encode(text: str, signature: str) -> str | None:
     """
     if not signature:
         logger.error("❌ Signature is empty!")
-        return None
-    max_signature_len = get_max_signature_len(text)
-    if len(signature) > max_signature_len:
-        logger.error(
-            f"❌ Signature is too long! Maximum length is {max_signature_len}."
-        )
         return None
 
     number = get_number_from_text(signature)

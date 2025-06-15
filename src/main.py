@@ -35,8 +35,9 @@ def get_file_content(path: Path) -> str:
             file_content = file.read()
     except FileNotFoundError:
         logger.exception(f"❌ No such file: {path}")
-
-    return file_content
+        raise
+    else:
+        return file_content
 
 
 def write_file_content(path: Path, content: str) -> None:
@@ -83,4 +84,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    main()  # coverage: ignore
